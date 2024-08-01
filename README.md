@@ -2,7 +2,6 @@
 
 Welcome to the **Flask Books Application**! 📚 This is a simple Flask application designed to display and manage a collection of books. Built with **SQLAlchemy** for database interactions and styled with **Bootstrap**, this app provides a user-friendly interface to explore book information.
 
-![Flask Books Application](https://via.placeholder.com/1200x400?text=Flask+Books+Application)
 
 **Features**
 
@@ -80,13 +79,9 @@ The home page displays a grid of books. Each card includes:
 - **Price**: The price of the book.
 - **Availability**: Availability status.
 
-![Home Page](https://via.placeholder.com/1200x600?text=Home+Page)
-
 **Book Details Modal**
 
 Click on any book card to view more details in a modal popup.
-
-![Book Modal](https://via.placeholder.com/600x400?text=Book+Modal)
 
 **REST API**
 
