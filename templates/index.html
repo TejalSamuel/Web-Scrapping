@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon_io/favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" sizes="32x32" href="{{ url_for('static', filename='favicon_io/favicon-32x32.png') }}">
+    <link rel="icon" sizes="16x16" href="{{ url_for('static', filename='favicon_io/favicon-16x16.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='favicon_io/apple-touch-icon.png') }}">
+    <link rel="icon" sizes="192x192" href="{{ url_for('static', filename='favicon_io/android-chrome-192x192.png') }}">
+    <link rel="icon" sizes="512x512" href="{{ url_for('static', filename='favicon_io/android-chrome-512x512.png') }}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Books</h1>
+        <div class="row">
+            {% for book in books %}
+            <div class="col-md-4 mb-3">
+                <div class="card card-style" data-toggle="modal" data-target="#bookModal" data-title="{{ book['title'] }}" data-price="{{ book['price'] }}" data-availability="{{ book['availability'] }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ book['title'] }}</h5>
+                        <p class="card-text">Price: {{ book['price'] }}</p>
+                        <p class="card-text">Availability: {{ book['availability'] }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="bookModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Book Title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="modalPrice">Price: </p>
+                    <p id="modalAvailability">Availability: </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            $('#bookModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget); // Button that triggered the modal
+                var title = button.data('title'); // Extract info from data-* attributes
+                var price = button.data('price');
+                var availability = button.data('availability');
+                
+                var modal = $(this);
+                modal.find('.modal-title').text(title);
+                modal.find('#modalPrice').text('Price: ' + price);
+                modal.find('#modalAvailability').text('Availability: ' + availability);
+
+                // Highlight the clicked card
+                document.querySelectorAll('.card-style').forEach(c => c.classList.remove('card-style-highlighted'));
+                button.addClass('card-style-highlighted');
+            });
+
+            $('#bookModal').on('hidden.bs.modal', function () {
+                document.querySelectorAll('.card-style').forEach(c => c.classList.remove('card-style-highlighted'));
+            });
+
+            document.querySelectorAll('.card-style').forEach(card => {
+                card.addEventListener('click', function() {
+                    document.querySelectorAll('.card-style').forEach(c => c.classList.remove('card-style-highlighted'));
+                    this.classList.add('card-style-highlighted');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

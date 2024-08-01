@@ -1,0 +1,16 @@
+.card-style {
+    background-color: #ffffff;
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 10px; /* Adjust this value for desired border radius */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+}
+
+.card-style:hover {
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.card-style-highlighted {
+    background-color: #f0f8ff; /* Light blue background for highlighting */
+    border: 2px solid #000; /* Darker border to indicate selection */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+}
