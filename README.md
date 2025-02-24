@@ -95,9 +95,7 @@ GET /api/books
 
 Feel free to fork the repository and submit pull requests. Please ensure that your contributions align with the project's coding standards.
 
-**License**
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 
 **Happy Coding!** 😊
